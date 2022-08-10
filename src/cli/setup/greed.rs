@@ -39,12 +39,12 @@ impl<'a> GreedCommand {
     }
 
     pub fn args<'b>() -> App<'a, 'b> {
-  SubCommand::with_name("greed").args(&[
-    Arg::with_name("name")
-    .long("name")
-    .required(true)
-    .takes_value(true)
-    .help("name for grreeding"),
-  ])
-}
+      SubCommand::with_name("greed").args(&[
+        Arg::with_name("name")
+        .long("name")
+        .required(true)
+        .takes_value(true)
+        .help("name for Greeding"),
+      ])
+    }
 }

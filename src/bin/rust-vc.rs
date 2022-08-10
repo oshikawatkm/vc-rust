@@ -2,6 +2,10 @@ extern crate vc_rust;
 
 use clap::App;
 use vc_rust::cli::setup::greed::GreedCommand;
+use vc_rust::cli::setup::generate_vc::GenerateVCCommand;
+use vc_rust::cli::setup::read_memo::ReadMemoCommand;
+// use vc_rust::cli::setup::import_vc::ImportVCCommand;
+// use vc_rust::cli::setup::sign_vc::SignVCCommand;
 use vc_rust::cli::setup::traits::Response;
 use vc_rust::errors::Error;
 
@@ -16,6 +20,23 @@ fn main () {
         .subcommand_matches("greed")
         .expect("invalid args")
     ),
+    Some("read-meom") => ReadMemoCommand::execute(
+      matches
+        .subcommand_matches("read-memo")
+        .expect("invalid args")
+    ),
+    // Some("generate-vc") => GenerateVCCommand::execute(
+    //   matches.subcommand_name("generate-vc")
+    //   .expect("invalid args")
+    // ),
+    // Some("import-vc") => ImportVCCommand::execute(
+    //   matches.subcommand_name("import-vc")
+    //   .expect("invalid args")
+    // ),
+    // Some("sign-vc") => SignVCCommand::execute(
+    //   matches.subcommand_name("sign-vc")
+    //   .expect("invalid args")
+    // ),
     None => return println!("No subcommand was used"), _ => unreachable!(),
   };
   match result {
