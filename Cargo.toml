@@ -14,3 +14,4 @@ serde_json = "1.0.39"
 tapyrus = { git = "https://github.com/chaintope/rust-tapyrus", tag = "v0.4.5", features = ["use-serde", "rand"] }
 secp256k1 = "0.15.3"
 hex = "0.3.2"
+ssi = "0.4.0"

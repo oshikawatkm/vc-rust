@@ -4,6 +4,7 @@ use crate::key::generate_key_pair;
 use clap::{App, ArgMatches, SubCommand};
 use std::fmt;
 use tapyrus::{PrivateKey, PublicKey};
+use std::string::ToString;
 
 pub struct CreateKeyResponse {
     private_key: PrivateKey,

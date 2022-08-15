@@ -1,17 +1,15 @@
 use crate::cli::setup::traits::Response;
 use crate::errors::Error;
-use crate::utils::Memo;
 use crate::utils::read_file;
 use std::fmt;
 use clap::{App, Arg, ArgMatches, SubCommand};
 
-
 pub struct ReadMemoResponse {
-  memo: Memo,
+  memo: String,
 }
 
 impl ReadMemoResponse {
-  fn new(memo: Memo) -> Self {
+  fn new(memo: String) -> Self {
     ReadMemoResponse {
       memo: memo,
     }
@@ -20,9 +18,9 @@ impl ReadMemoResponse {
 
 impl Response for ReadMemoResponse {}
 
-impl fmt::Display for ReadMemoResponse {
+impl fmt::Display for ReadMemoResponse  {
   fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-    write!(f, "{}", self.memo.content)
+    write!(f, "{:?}", self.memo)
   }
 }
 
@@ -34,7 +32,7 @@ impl<'a> ReadMemoCommand {
       .value_of("path")
       .ok_or(Error::InvalidArgs("path".to_string()))?;
 
-    let memo = read_file(path)?;
+    let memo = read_file(path).unwrap();
     Ok(Box::new(ReadMemoResponse::new(memo)))
   }
 
