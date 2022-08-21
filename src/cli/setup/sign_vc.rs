@@ -41,8 +41,8 @@ impl<'a> SignVCCommand {
     .ok_or(Error::InvalidArgs("vc".to_string()))?;
     
     let vc = generate_vc_from_path_or_str(path, vc_str).unwrap();
-    let proof = vc.generate_proof(jwk, options, resolver);
-    let signed_vc = vc.add_proof(privkey);
+    let proof = vc.generate_proof(jwk, options, resolver).unwrap();
+    let signed_vc = vc.add_proof(proof);
     
     Ok(Box::new(SignVCResponse::new(signed_vc)))
   }
